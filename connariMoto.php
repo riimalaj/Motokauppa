@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
 }
 //$con->close();
 */
-print "connected";
+//print "connected";
 ?>
 
 </body>

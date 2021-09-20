@@ -35,7 +35,11 @@
     <section class="container content-section">
         <h2 class="section-header">Motot</h2>
         <div class="shop-items">
-            <div class = "new"></div>
+            <!--<div class = "new"></div>-->
+        <?php
+            require "haeTuotteet.php";
+        ?>
+<!--
             <div class="shop-item ">
                 <span class="shop-item-title">Indian Scout</span>
                 <img class="shop-item-image"
@@ -68,7 +72,8 @@
                             type="button">OSTA</button>
                 </div>
             </div>
-        </div>
+            -->
+        </div> <!--shop-items end div-->
     </section>
     <section class="container content-section">
         <h2 class="section-header">Ostokset</h2>
@@ -109,7 +114,6 @@
     </footer>
     <script src="moto.js
         "
-        src = "admin.js"
             async
             defer></script>
 </body>

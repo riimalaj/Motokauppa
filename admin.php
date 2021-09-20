@@ -11,7 +11,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
-          href="styles.css">
+          href="adminStyles.css">
+
 </head>
 
 <body> <?php
@@ -32,16 +33,16 @@ $msg = "";
         $result = mysqli_query($con, $query) or die('inserting values failed '.mysqli_error($con));
 
         //Siiretään uploadattu file Images hakemistoon
-        if (move_uploaded_file($_FILES['kuva']['tmp_name'], $target)){
-            ?><script>alert("Kuva ladattu onnistuneesti Images kansioon")</script>
-        <?php
-        }
-        else{
-            ?><script>alert("Kuvan lataamisessa ongelmia")</script>
+        if (!file_exists($target)){
+            if (move_uploaded_file($_FILES['kuva']['tmp_name'], $target)){
+                ?><script>alert("Kuva ladattu onnistuneesti Images kansioon")</script>
             <?php
+            }
+            else{
+                ?><script>alert("Kuvan lataamisessa ongelmia")</script>
+                <?php
+            }
         }
-
-
 
         if ($result)
         {
@@ -72,21 +73,24 @@ function test_input($data)
               method="POST"
               enctype="multipart/form-data">
             <label for
-                   name="otsikko">Otsikko <input type="text"
+                   name="otsikko">Otsikko </label>
+                   <input type="text"
                        name="otsikko"
                        width="100px">
-            </label>
             <p>
                 <label for
-                       name="hinta">Hinta <input type="text"
+                       name="hinta">Hinta </label><input type="text"
                            name="hinta"
                            width="30px">
-                </label>
                 <p>
+                    <div class = "kuvis">
                     <label for
-                           name="kuva">Kuva tiedosto <input type="file"
+                           name="kuva">Kuva tiedosto
+                           <input type="file"
                                name="kuva">
-                    </label>
+                               </label>
+                    </div>
+
                     <p>
                     </p>
                     <input type="submit"
@@ -103,7 +107,7 @@ function test_input($data)
             $sql = "SELECT * FROM Motari WHERE Id=(SELECT LAST_INSERT_ID())";
             $result = mysqli_query($con, $sql);
             while($row = mysqli_fetch_array($result)){
-                //echo $row['kuva'];
+                echo $row['kuva'];
                 echo "<div id = 'tuote'";
                     echo "<p>Otsikko: ".$row['otsikko']. "</p>";
                     echo "<img src = 'Images/".$row['kuva']."'>";
@@ -113,6 +117,7 @@ function test_input($data)
         }
 
 ?> </div>
+    <script src = "moto.js" async defer></script>
 </body>
 
 </html>

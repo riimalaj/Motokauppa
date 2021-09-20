@@ -25,31 +25,19 @@ body {
 form {
     padding: 5px;
     margin: 20px auto;
-    text-align: justify;
+    text-align: center;
     width: 50%;
 }
 
-label {
-    display: block;
-    padding-left: 15px;
-    text-indent: -15px;
-}
-
-input {
-    width: fit-content;
-    height: fit-content;
-    padding: 0;
-    margin: 0;
-    vertical-align: bottom;
-    position: relative;
-    top: 0px;
-    *overflow: hidden;
-}
-
-
-#formLabels{
+Label {
     display: inline-block;
-    width:150px;
+    width:80px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.kuvis{
+    text-align: center;
 }
 
 .nav ul {
@@ -159,19 +147,19 @@ input {
     /*padding: 0.67em 0.67em;*/
     padding:5px;
     cursor: pointer;
-    height:50px;
+    height:30px;
 }
 
 .btn-header {
-    margin: 0.5em 15% 2em 15%;
+    margin: 0.1em 15% 1em 15%;
     color: white;
     border: 2px solid #2d9cdb;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 0;
-    font-size: 1.5em;
+    font-size: 20px;
     font-weight: lighter;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .btn-header:hover {
@@ -369,8 +357,8 @@ input {
 
 .btn-purchase {
     display: block;
-    margin: 40px auto 80px auto;
-    font-size: 1.75em;
+    margin: 0px auto 80px auto;
+    font-size: 1em;
 }
 
 @media (max-width: 768px) {
