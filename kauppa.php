@@ -16,6 +16,7 @@
           content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
           href="styles.css">
+
 </head>
 
 <body>
@@ -37,9 +38,31 @@
         <div class="shop-items">
             <!--<div class = "new"></div>-->
         <?php
-            require "haeTuotteet.php";
-        ?>
-<!--
+            //require "haeTuotteet.php"; //This is same than section below..
+
+            //<?php
+
+            //Section below connect to mysql table and fetch records (products).
+            //Problem is that from some reason cannot get this work with moto.js as target is to move product to "OSTOKSET" once user has
+            //clicked OSTA- button in ui. Impacted crash happens in moto.js at line 65.
+
+            require "connariMoto.php";
+            $sql = "SELECT * FROM Motari";
+            $result = mysqli_query($con, $sql);
+            while($row = mysqli_fetch_array($result)){
+             echo "<div class = 'shop-item'";
+             echo "<span class = 'shop-item-title'>" .$row['otsikko']. "</span>";
+             echo "<img class ='shop-item-image' " . "src = Images/".$row['kuva'].">";
+                 echo "<div class = 'shop-item-details>'";
+                     echo "<span class = 'shop-item-price'>€ ".$row['hinta']. "</span>";
+                     echo "<button class='btn btn-primary shop-item-button' type='button'>OSTA</button>";
+                 echo "</div>";
+             echo "</div>";
+            }
+ ?>
+
+            <!--In case below wouldn't be commented then moto.js script would move products to "OSTOKSET"
+
             <div class="shop-item ">
                 <span class="shop-item-title">Indian Scout</span>
                 <img class="shop-item-image"
@@ -112,10 +135,7 @@
             </ul>
         </div>
     </footer>
-    <script src="moto.js
-        "
-            async
-            defer></script>
+    <script src="moto.js" async defer></script>
 </body>
 
 </html>
