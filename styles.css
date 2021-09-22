@@ -261,6 +261,8 @@ input {
 }
 
 .shop-item-price {
+    text-align: end;
+    padding-right: 30px;
     flex-grow: 1;
     color: #333;
 }
